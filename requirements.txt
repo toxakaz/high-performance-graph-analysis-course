@@ -1,6 +1,6 @@
 black
-pre-commit
 networkx
+pre-commit
 pygraphblas
 pytest
 scipy
