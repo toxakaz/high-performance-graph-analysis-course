@@ -17,12 +17,12 @@ def matrix_from_edges(
     """Generates gb.Matrix from list of edges.
 
     Args:
-        size (int): graph size
-        edges (List[Tuple[int, int]]): list of graph edges
-        is_directed (bool): True if graph is directed
+        size (int): graph size.
+        edges (List[Tuple[int, int]]): list of graph edges.
+        is_directed (bool): True if graph is directed.
 
     Returns:
-        gb.Matrix: graph
+        gb.Matrix: graph.
     """
 
     graph = gb.Matrix.sparse(gb.types.BOOL, nrows=size, ncols=size)
@@ -38,10 +38,10 @@ def read_graph(path: str) -> gb.Matrix:
     """Read graph from file.
 
     Args:
-        path (str): path to graph
+        path (str): path to graph.
 
     Returns:
-        gb.Matrix: graph
+        gb.Matrix: graph.
     """
 
     nxm = nx.nx_agraph.read_dot(path)
@@ -54,27 +54,37 @@ def read_graph(path: str) -> gb.Matrix:
 
 def is_NxN_bool_matrix(graph: gb.Matrix):
     """Checks the graph type and is graph matrix a square matrix.
-    Raises error if graph matrix is not NxN bool matrix.
 
     Args:
-        graph (gb.Matrix): matrix of the graph
+        graph (gb.Matrix): matrix of the graph.
 
-    Returns:
-
+    Raises:
+        ValueError: error if graph matrix is not NxN bool matrix.
     """
+
     if graph.type != gb.BOOL:
         raise ValueError(f"Matrix type was {graph.type}, adjacency matrix expected")
     if not graph.square:
         raise ValueError("Adjacency matrix must be square")
 
 
+def is_symmetric_matrix(graph: gb.Matrix) -> bool:
+    for i, j in zip(graph.I, graph.J):
+        x = graph.get(i, j, default=graph.type.default_zero)
+        y = graph.get(j, i, default=graph.type.default_zero)
+        if x != y:
+            return False
+    return True
+
+
 def start_vertex_out_of_range_error(vertex: int) -> ValueError:
     """Creates vertex out of range error.
 
     Args:
-        vertex (int): error vertex
+        vertex (int): error vertex.
 
     Returns:
-        ValueError: error
+        ValueError: error.
     """
+
     return ValueError(f"Start vertex {vertex} is out of range")
