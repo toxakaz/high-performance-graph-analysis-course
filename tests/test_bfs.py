@@ -1,6 +1,5 @@
 import pytest
-from project import bfs
-from tests.utils import matrix_from_edges
+from project import bfs, matrix_from_edges
 
 
 @pytest.mark.parametrize(
