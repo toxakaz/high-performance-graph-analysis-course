@@ -10,14 +10,19 @@ def bfs(graph: gb.Matrix, start: int) -> List[int]:
     """BFS on a directed graph.
 
     Args:
-        graph (gb.Matrix):  NxN bool matrix of the graph
-        start (int):        bfs start index (from 0 to N - 1)
+        graph (gb.Matrix):  NxN bool matrix of the graph.
+        start (int):        bfs start index (from 0 to N - 1).
+
+    Raises:
+        ValueError: error if graph matrix is not NxN bool matrix.
+        ValueError: error start vertex is out of range.
 
     Returns:
         List[int]: a list, where for each vertex it is indicated at what step it is reachable.
         The starting vertex is reachable at the 0 step,
         if the vertex is not reachable, then the value of the corresponding cell is -1.
     """
+
     is_NxN_bool_matrix(graph)
     if start < 0 or start >= graph.nrows:
         raise start_vertex_out_of_range_error(start)
@@ -41,8 +46,12 @@ def msbfs(graph: gb.Matrix, start_vector: List[int]) -> List[Tuple[int, List[int
     """BFS on a directed graph from multiple source.
 
     Args:
-        graph (gb.Matrix):          NxN bool matrix of the graph
-        start_vertex (List[int]):   bfs start indexes (from 0 to N - 1)
+        graph (gb.Matrix):          NxN bool matrix of the graph.
+        start_vertex (List[int]):   bfs start indexes (from 0 to N - 1).
+
+    Raises:
+        ValueError: error if graph matrix is not NxN bool matrix.
+        ValueError: error start vertex is out of range.
 
     Returns:
         List[Tuple[int, List[int]]]: a list of pairs (start, parents),
