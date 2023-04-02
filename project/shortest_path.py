@@ -11,8 +11,8 @@ def sssp(graph: gb.Matrix, start: int) -> List[int]:
     """Finds Single-Source Shortest Paths distances using an Bellman-Ford algorithm.
 
     Args:
-        graph (gb.Matrix): NxN matrix of the graph.
-        start (int): path start index (from 0 to N - 1).
+        graph (gb.Matrix):  NxN matrix of the graph.
+        start (int):        path start index (from 0 to N - 1).
 
     Raises:
         ValueError: error if graph matrix is not NxN matrix.
@@ -68,7 +68,7 @@ def apsp(graph: gb.Matrix) -> List[Tuple[int, List[int]]]:
     """Finds All-Pairs Shortest Paths distances using an Floyd-Warshall algorithm.
 
     Args:
-        graph (gb.Matrix):          NxN matrix of the graph.
+        graph (gb.Matrix): NxN matrix of the graph.
 
     Raises:
         ValueError: error if graph matrix is not NxN matrix.
