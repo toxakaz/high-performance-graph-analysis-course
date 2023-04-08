@@ -61,6 +61,7 @@ def msbfs(graph: gb.Matrix, start_vector: List[int]) -> List[Tuple[int, List[int
         Starting vertices will have -1 in these lists,
         and unreachable vertices will have -2.
     """
+
     is_NxN_bool_matrix(graph)
 
     n = graph.ncols
